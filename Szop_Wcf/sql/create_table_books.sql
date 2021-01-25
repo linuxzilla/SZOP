@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS `books` (
+  id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  title varchar(255) NOT NULL,
+  originalTitle varchar(255) NOT NULL ,
+  author varchar(255) NOT NULL,
+  price INT UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

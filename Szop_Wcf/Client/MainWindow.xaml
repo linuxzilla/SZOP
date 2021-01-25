@@ -1,0 +1,91 @@
+﻿<Window x:Class="Client.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Client"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="460" Width="900" Loaded="Window_Loaded" Closing="Window_Closing">
+    <Grid>
+        <Grid x:Name="GridMain" Visibility="Visible" Width="900" Height="460">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="223*"/>
+                <ColumnDefinition Width="0*"/>
+                <ColumnDefinition Width="227*"/>
+            </Grid.ColumnDefinitions>
+            <DataGrid x:Name="dgListBooks" Height="267" Margin="0,29,40,0" VerticalAlignment="Top" RowHeight="21" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" SelectionUnit="FullRow" HorizontalAlignment="Right" Width="828" Grid.ColumnSpan="3">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="10" Header="#" Binding="{Binding Id}" />
+                    <DataGridTextColumn Width="*" Header="Title" Binding="{Binding Title}" />
+                    <DataGridTextColumn Width="*" Header="Original title" Binding="{Binding OriginalTitle}" />
+                    <DataGridTextColumn Width="*" Header="Author" Binding="{Binding Author}" />
+                    <DataGridTextColumn Width="50" Header="Price" Binding="{Binding Price}" />
+                    <DataGridTextColumn Width="40" Header="Likes" Binding="{Binding Like}" />
+                    <DataGridTextColumn Width="50" Header="Dislikes" Binding="{Binding Dislike}" />
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <Button x:Name="btLike" Click="btLike_Click" HorizontalAlignment="Left" Margin="32,330,0,0" VerticalAlignment="Top" Width="70" Height="70" BorderThickness="0">
+                <Button.Background>
+                    <ImageBrush ImageSource="Assets/like.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="btDislike" Click="btDislike_Click" HorizontalAlignment="Center" Margin="170,330,206,0" VerticalAlignment="Top" Width="70" Height="71" BorderThickness="0">
+                <Button.Background>
+                    <ImageBrush ImageSource="Assets/dislike.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="btAdd" Content="Add new book" Click="btAdd_Click" HorizontalAlignment="Center" Margin="285,352,25,0" VerticalAlignment="Top" Width="136" FontSize="20" BorderThickness="0" Background="#FF0ED429" Foreground="#FFFBFBFB"/>
+            <Button x:Name="btDelete" Content="Remove" Click="btDelete_Click" HorizontalAlignment="Center" Margin="177,352,196,0" VerticalAlignment="Top" Width="81" FontSize="20" BorderThickness="0" Background="#FFD40E0E" Foreground="#FFFBFBFB" RenderTransformOrigin="2.113,1.272" Grid.Column="1" Grid.ColumnSpan="2"/>
+            <Button x:Name="btLogout" Content="Logout" Click="btLogout_Click" HorizontalAlignment="Right" Margin="0,352,40,0" VerticalAlignment="Top" Width="125" FontSize="20" BorderThickness="0" Background="#FFD4CB0E" Foreground="#FFFBFBFB" Grid.Column="1" Grid.ColumnSpan="2"/>
+            <Button x:Name="btRefresh" Content="Refresh" Click="btRefresh_Click" HorizontalAlignment="Center" Margin="17,352,312,0" VerticalAlignment="Top" Width="125" FontSize="20" BorderThickness="0" Background="#FF0E17D4" Foreground="#FFFBFBFB" Grid.Column="2"/>
+
+        </Grid>
+        <Grid x:Name="GridLogin" Visibility="Hidden" Width="900" Height="460" >
+            <TextBox x:Name="tbUsername" Height="35" Margin="394.095,121.286,327.905,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" HorizontalAlignment="Center" FontSize="20" BorderThickness="0,0,0,2" BorderBrush="Black">
+                <TextBox.Background>
+                    <SolidColorBrush Color="#FF3CF9F9" Opacity="0.2"/>
+                </TextBox.Background>
+
+            </TextBox>
+            <PasswordBox x:Name="tbPassword" HorizontalAlignment="Center" Width="170" Margin="394.095,169.286,327.905,0" VerticalAlignment="Top" FontSize="20" BorderThickness="0,0,0,2" BorderBrush="Black">
+                <PasswordBox.Background>
+                    <SolidColorBrush Color="#FF3CF9F9" Opacity="0.2"/>
+                </PasswordBox.Background>
+            </PasswordBox>
+            <Label x:Name="lbMessege" Content="My little low tech BookShop" HorizontalAlignment="Center" Margin="204,10,214,0" HorizontalContentAlignment="Center" VerticalAlignment="Top" FontSize="36" Width="482"/>
+            <Label Content="Username:" HorizontalAlignment="Center" Margin="268,121,529,0" VerticalAlignment="Top" FontSize="20"/>
+            <Label Content="Password:" HorizontalAlignment="Center" Margin="268,161,520,0" VerticalAlignment="Top" FontSize="20" Width="112"/>
+            <Button x:Name="btLogin" Content="Login" Click="btLogin_Click" HorizontalAlignment="Center" Margin="398,342,352,0" VerticalAlignment="Top" Width="150" Height="35" Background="#FF0ED429" Foreground="#FFFBFBFB" FontSize="20" BorderThickness="0"/>
+        </Grid>
+        <Grid x:Name="GridAdd" Visibility="Hidden"  Width="900" Height="460">
+            <Label Content="Title:" HorizontalAlignment="Center" Margin="250,100,540,0" VerticalAlignment="Top" FontSize="20" Width="110"/>
+            <Label Content="Original title:" HorizontalAlignment="Center" Margin="250,160,523,0" VerticalAlignment="Top" FontSize="20" Width="127"/>
+            <Button x:Name="btAddBook" Content="Add" Click="btAddBook_Click" Margin="760,17,40,0" VerticalAlignment="Top" Background="#FF17D40E" Foreground="#FFFBFBFB" FontSize="24" BorderThickness="0"/>
+            <Button x:Name="btCancel" Content="Cancel" Click="btCancel_Click" HorizontalAlignment="Center" Margin="35,17,765,0" VerticalAlignment="Top" Width="100" Background="#FFD40E17" Foreground="#FFFBFBFB" FontSize="24" BorderThickness="0"/>
+            <TextBox  x:Name="tbBookTitle" HorizontalAlignment="Center" Height="23" Margin="398,114,382,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="20" BorderThickness="0,0,0,2" BorderBrush="Black">
+                <TextBox.Background>
+                    <SolidColorBrush Color="#FF3CF9F9" Opacity="0.2"/>
+                </TextBox.Background>
+            </TextBox>
+            <TextBox x:Name="tbBookOriginalTitle" HorizontalAlignment="Center" Height="23" Margin="393.75,174.417,378.25,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="20" BorderThickness="0,0,0,2" BorderBrush="Black">
+                <TextBox.Background>
+                    <SolidColorBrush Color="#FF3CF9F9" Opacity="0.2"/>
+                </TextBox.Background>
+            </TextBox>
+            <TextBox x:Name="tbAuthor" HorizontalAlignment="Center" Height="23" Margin="398,232,382,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="20" BorderThickness="0,0,0,2" BorderBrush="Black">
+                <TextBox.Background>
+                    <SolidColorBrush Color="#FF3CF9F9" Opacity="0.2"/>
+                </TextBox.Background>
+            </TextBox>
+            <Label Content="Author:" HorizontalAlignment="Center" Margin="250,218,523,0" VerticalAlignment="Top" FontSize="20" Width="127"/>
+            <TextBox x:Name="tbPrice" HorizontalAlignment="Center" Height="23" Margin="398,286,382,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="20" BorderThickness="0,0,0,2" BorderBrush="Black" Text="0">
+                <TextBox.Background>
+                    <SolidColorBrush Color="#FF3CF9F9" Opacity="0.2"/>
+                </TextBox.Background>
+            </TextBox>
+            <Label Content="Price:" HorizontalAlignment="Center" Margin="250,272,523,0" VerticalAlignment="Top" FontSize="20" Width="127"/>
+
+        </Grid>
+    </Grid>
+</Window>
